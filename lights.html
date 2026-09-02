@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strobe Light Effect</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+        #strobe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="strobe"></div>
+    <audio id="audio" loop>
+        <source src="lights.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        const strobe = document.getElementById('strobe');
+        const audio = document.getElementById('audio');
+        let interval;
+
+        document.body.addEventListener('click', function() {
+            strobe.style.display = 'block';
+            audio.play();
+            interval = setInterval(() => {
+                strobe.style.visibility = (strobe.style.visibility === 'hidden' ? 'visible' : 'hidden');
+            }, 100);
+        });
+    </script>
+</body>
+</html>
